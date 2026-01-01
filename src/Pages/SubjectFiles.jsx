@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Loading from "../Common/Loading";
 
+
 export default function SubjectFiles() {
   const { id } = useParams(); // folder ID from URL
   const [files, setFiles] = useState([]);
@@ -42,11 +43,11 @@ export default function SubjectFiles() {
 
   return (
     <div className="min-h-screen bg-gray-100 p-4 sm:p-6 md:p-8">
-      {/* Back Button */}
+      
       <div className="mb-6">
         <button
           onClick={() => navigate(-1)}
-          className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition"
+          className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition cursor-pointer"
         >
           ← Back to Subjects
         </button>
@@ -72,7 +73,7 @@ export default function SubjectFiles() {
             <div className="p-6 flex-1 flex flex-col">
               {/* File Info */}
               <p className="font-semibold text-lg truncate text-gray-900">{file.name}</p>
-              <p className="text-sm text-gray-500 mt-1">{file.mimeType}</p>
+              {/* <p className="text-sm text-gray-500 mt-1">{file.mimeType}</p> */}
             </div>
 
             {/* Action Buttons */}

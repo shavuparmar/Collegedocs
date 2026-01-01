@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Loading from "../Common/Loading";
+import Header from "../Common/Header";
 
 export default function Subjects() {
   const [subjects, setSubjects] = useState([]);
@@ -47,11 +48,12 @@ export default function Subjects() {
     return <div className="text-center mt-10 text-gray-500">No subjects found.</div>;
 
   return (
-    
+    <>
+      <Header/>
     <div className="min-h-screen bg-gray-100 p-6 sm:p-8 md:p-10">
         <button
           onClick={() => navigate(-1)}
-          className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition"
+          className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition cursor-pointer"
         >
           ← Back to Subjects
         </button>
@@ -74,5 +76,6 @@ export default function Subjects() {
         ))}
       </div>
     </div>
+    </>
   );
 }
