@@ -44,7 +44,7 @@ export default function Footer() {
           </h3>
           <ul className="space-y-2 text-sm">
             <li className="hover:text-white cursor-pointer">How to Access Files</li>
-            <li className="hover:text-white cursor-pointer">Google Drive Sync</li>
+            <li className="hover:text-white cursor-pointer"> <Link to={"/drivehelp"}> Google Drive Sync</Link>  </li>
             
             <li className="hover:text-white cursor-pointer"> <Link to={"/howtoaccess"}>How to access</Link>  </li>
           </ul>
