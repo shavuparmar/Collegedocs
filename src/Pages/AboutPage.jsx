@@ -3,101 +3,105 @@ import Header from "../Common/Header";
 
 export default function AboutPage() {
   return (
-    <div className=" text-gray-800">
-      
-    <Header/>
-      <section className="bg-white border-b">
-        <div className="max-w-6xl mx-auto px-6 py-16 text-center">
-          <h1 className="text-3xl md:text-4xl font-bold mb-4">
-            About StudyStacks
+    <div className="text-gray-800 bg-gradient-to-br from-slate-50 to-slate-100 min-h-screen">
+      <Header />
+
+      {/* HERO SECTION */}
+      <section className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-blue-600 opacity-10" />
+        <div className="max-w-6xl mx-auto px-6 py-20 text-center relative animate-fadeIn">
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-6 text-gray-900">
+            About <span className="text-indigo-600">StudyStacks</span>
           </h1>
-          <p className="text-gray-600 max-w-3xl mx-auto text-base md:text-lg">
-            StudyStacks is a centralized academic document-sharing platform
-            designed for students to access notes, assignments, question papers,
-            and study materials anytime, anywhere.
+          <p className="text-gray-600 max-w-3xl mx-auto text-base md:text-lg leading-relaxed">
+            StudyStacks is a modern academic resource platform built to simplify
+            how college students access notes, assignments, question papers,
+            and essential study materials — anytime, anywhere.
           </p>
         </div>
       </section>
 
-      {/* About Content */}
-      <section className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
-        
-        {/* Text */}
-        <div>
-          <h2 className="text-2xl font-semibold mb-4">
+      {/* WHAT IS STUDYSTACKS */}
+      <section className="max-w-6xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div className="animate-slideLeft">
+          <h2 className="text-3xl font-bold mb-5 text-gray-900">
             What is StudyStacks?
           </h2>
           <p className="text-gray-700 leading-relaxed mb-4">
-            StudyStacks is a college-focused project that allows students
-            to easily share and access academic documents such as PDFs,
-            Word files, assignments, e-notes, and previous year question papers.
+            StudyStacks is a college-focused digital platform that allows students
+            to seamlessly access academic documents such as PDFs, Word files,
+            assignments, e-notes, and previous year question papers.
           </p>
           <p className="text-gray-700 leading-relaxed">
-            All documents are securely fetched from Google Drive,
-            ensuring fast access, real-time updates, and reliable storage
-            without manual uploads on the website.
+            All content is dynamically fetched from Google Drive, ensuring
+            real-time updates, fast performance, and secure storage without
+            manual uploads or cluttered file sharing.
           </p>
         </div>
 
-        {/* Image / Card */}
-        <div className="bg-white shadow-md rounded-lg p-6">
-          <h3 className="text-lg font-semibold mb-3">
+        {/* HIGHLIGHTS CARD */}
+        <div className="bg-white/80 backdrop-blur-lg border border-gray-200 rounded-2xl shadow-xl p-8 animate-slideRight">
+          <h3 className="text-xl font-semibold mb-5 text-gray-900">
             Platform Highlights
           </h3>
-          <ul className="space-y-2 text-gray-700 text-sm">
-            <li>📁 Subject-wise document organization</li>
-            <li>📄 PDF, DOC, and notes support</li>
-            <li>🔍 Search by subject code & name</li>
-            <li>☁️ Google Drive integration</li>
-            <li>📱 Fully responsive design</li>
+          <ul className="space-y-3 text-gray-700 text-sm">
+            <li className="flex items-center gap-2">📁 Subject-wise organization</li>
+            <li className="flex items-center gap-2">📄 PDF, DOC & notes support</li>
+            <li className="flex items-center gap-2">🔍 Search by subject code & name</li>
+            <li className="flex items-center gap-2">☁️ Google Drive integration</li>
+            <li className="flex items-center gap-2">📱 Fully responsive UI</li>
+            <li className="flex items-center gap-2">⚡ Fast & lightweight</li>
           </ul>
         </div>
       </section>
 
-      {/* Mission Section */}
-      <section className=" border-t">
-        <div className="max-w-6xl mx-auto px-6 py-14 text-center">
-          <h2 className="text-2xl font-semibold mb-4">
+      {/* MISSION */}
+      <section className="bg-white border-t border-b">
+        <div className="max-w-6xl mx-auto px-6 py-20 text-center animate-fadeIn">
+          <h2 className="text-3xl font-bold mb-6 text-gray-900">
             Our Mission
           </h2>
-          <p className="text-gray-700 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-gray-700 max-w-4xl mx-auto leading-relaxed text-base md:text-lg">
             Our mission is to simplify academic resource sharing by creating
-            a single, well-organized platform where students can find all
-            essential study materials without relying on scattered WhatsApp
-            groups or repeated document requests.
+            a single, organized, and reliable platform where students can find
+            everything they need — without relying on scattered WhatsApp groups,
+            repeated document requests, or lost files.
           </p>
         </div>
       </section>
 
-      {/* Use Case Section */}
-      <section className="max-w-6xl mx-auto px-6 py-14">
-        <h2 className="text-2xl font-semibold text-center mb-10">
+      {/* WHO CAN USE */}
+      <section className="max-w-6xl mx-auto px-6 py-20">
+        <h2 className="text-3xl font-bold text-center mb-14 text-gray-900 animate-fadeIn">
           Who Can Use StudyStacks?
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           
-          <div className=" p-6 rounded-lg shadow-sm">
-            <h3 className="font-semibold mb-2">Students</h3>
+          {/* STUDENTS */}
+          <div className="bg-white/80 backdrop-blur-lg border border-gray-200 rounded-2xl shadow-lg p-8 text-center hover:-translate-y-2 transition-all duration-300 animate-scaleIn">
+            <div className="text-4xl mb-4">🎓</div>
+            <h3 className="font-semibold text-lg mb-3">Students</h3>
             <p className="text-sm text-gray-600">
               Access notes, assignments, and question papers
-              from anywhere at any time.
+              from any device, anytime.
             </p>
           </div>
 
-        
-
-          <div className=" p-6 rounded-lg shadow-sm">
-            <h3 className="font-semibold mb-2">Colleges</h3>
+          {/* COLLEGES */}
+          <div className="bg-white/80 backdrop-blur-lg border border-gray-200 rounded-2xl shadow-lg p-8 text-center hover:-translate-y-2 transition-all duration-300 animate-scaleIn delay-100">
+            <div className="text-4xl mb-4">🏫</div>
+            <h3 className="font-semibold text-lg mb-3">Colleges</h3>
             <p className="text-sm text-gray-600">
-              Maintain a digital repository of academic documents
-              for better accessibility.
+              Maintain a centralized digital repository
+              for academic documents.
             </p>
           </div>
+
+          
 
         </div>
       </section>
-
     </div>
   );
 }

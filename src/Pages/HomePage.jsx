@@ -30,22 +30,22 @@ export default function HomePage() {
               title="📘 Assignments"
               desc="Find and share subject-wise assignments with clear formatting and easy access."
               button="View Assignments"
-              onClick={() => navigate("/assignments")}
+              onClick={() => navigate("/subjects")}
             />
 
-            <Card
+            {/* <Card
               title="📗 Notes"
               desc="Well-structured notes to help you revise faster and understand concepts better."
               button="View Notes"
               onClick={() => navigate("/notes")}
-            />
+            /> */}
 
-            <Card
+            {/* <Card
               title="📄 Question Papers"
               desc="Mid and final exam question papers to practice and prepare effectively."
               button="View Papers"
               onClick={() => navigate("/papers")}
-            />
+            /> */}
 
             <Card
               title="📚 Subjects"

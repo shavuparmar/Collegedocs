@@ -5,18 +5,22 @@ import Header from "./Header";
 export default function Footer() {
   return (
     <footer className="bg-slate-900 text-slate-300">
-    
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-
         {/* About StudyStacks */}
         <div>
-          <h2 className="text-2xl font-bold text-white mb-3">
-            StudyStacks
-          </h2>
+          <div className="flex items-center justify-center -mt-6">
+            <img
+              src="/android-chrome-512x512.png"
+              alt="StudyStacks Logo"
+              className="h-24 w-24"
+            />
+            <h2 className="text-2xl font-bold text-white">StudyStacks</h2>
+          </div>
+
           <p className="text-sm leading-relaxed">
-            StudyStacks is a student-friendly platform to access
-            assignments, notes, question papers, and e-resources
-            securely fetched from Google Drive.
+            StudyStacks is a student-friendly platform to access assignments,
+            notes, question papers, and e-resources securely fetched from Google
+            Drive.
           </p>
           <p className="text-xs mt-3 text-slate-400">
             Built for college students 📚
@@ -32,8 +36,12 @@ export default function Footer() {
             <li className="hover:text-white cursor-pointer">Assignments</li>
             <li className="hover:text-white cursor-pointer">E-Notes</li>
             <li className="hover:text-white cursor-pointer">Mid Sem Papers</li>
-            <li className="hover:text-white cursor-pointer">Final Exam Papers</li>
-            <li className="hover:text-white cursor-pointer">Subject Wise Docs</li>
+            <li className="hover:text-white cursor-pointer">
+              Final Exam Papers
+            </li>
+            <li className="hover:text-white cursor-pointer">
+              Subject Wise Docs
+            </li>
           </ul>
         </div>
 
@@ -43,10 +51,18 @@ export default function Footer() {
             Student Help
           </h3>
           <ul className="space-y-2 text-sm">
-            <li className="hover:text-white cursor-pointer">How to Access Files</li>
-            <li className="hover:text-white cursor-pointer"> <Link to={"/drivehelp"}> Google Drive Sync</Link>  </li>
-            
-            <li className="hover:text-white cursor-pointer"> <Link to={"/howtoaccess"}>How to access</Link>  </li>
+            <li className="hover:text-white cursor-pointer">
+              How to Access Files
+            </li>
+            <li className="hover:text-white cursor-pointer">
+              {" "}
+              <Link to={"/drivehelp"}> Google Drive Sync</Link>{" "}
+            </li>
+
+            <li className="hover:text-white cursor-pointer">
+              {" "}
+              <Link to={"/howtoaccess"}>How to access</Link>{" "}
+            </li>
           </ul>
         </div>
 
@@ -70,14 +86,13 @@ export default function Footer() {
             </span>
           </div>
         </div>
-
       </div>
 
       {/* Bottom Bar */}
       <div className="border-t border-slate-700 text-center py-4 text-sm text-slate-400">
-        © {new Date().getFullYear()} StudyStacks • College Academic Resource Platform
+        © {new Date().getFullYear()} StudyStacks • College Academic Resource
+        Platform
       </div>
-
     </footer>
   );
 }

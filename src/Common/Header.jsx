@@ -7,10 +7,15 @@ export default function Header() {
     <header className="sticky top-0 z-50 bg-white border-b">
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
-
-          {/* Logo */}
-          <div className="text-2xl font-bold text-gray-800">
-            Study<span className="text-indigo-600">Stacks</span>
+          <div className="flex items-center justify-center gap-3">
+            <img
+              src="/android-chrome-512x512.png"
+              alt="StudyStacks Logo"
+              className="h-18 w-18"
+            />
+            <div className="text-2xl font-bold text-blue-800">
+              Study<span className="text-slate-900">Stacks</span>
+            </div>
           </div>
 
           {/* Desktop Menu */}
@@ -30,10 +35,7 @@ export default function Header() {
           </nav>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-2xl"
-            onClick={() => setOpen(!open)}
-          >
+          <button className="md:hidden text-2xl" onClick={() => setOpen(!open)}>
             ☰
           </button>
         </div>

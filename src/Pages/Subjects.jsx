@@ -8,9 +8,10 @@ export default function Subjects() {
   const [subjects, setSubjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
   const navigate = useNavigate();
 
-  // Fetch API key and folder ID from .env
+  // ENV
   const API_KEY = import.meta.env.VITE_GGDRV_URI;
   const TOP_FOLDER_ID = import.meta.env.VITE_GGDRV_TOP_FOLDER;
 
@@ -18,18 +19,13 @@ export default function Subjects() {
     const fetchSubjects = async () => {
       try {
         const query = encodeURIComponent(`'${TOP_FOLDER_ID}' in parents`);
-        const url = `https://www.googleapis.com/drive/v3/files?q=${query}&key=${API_KEY}&fields=files(id,name,mimeType,webViewLink)`;
+        const url = `https://www.googleapis.com/drive/v3/files?q=${query}&key=${API_KEY}&fields=files(id,name,mimeType)`;
 
-        const response = await axios.get(url);
-
-        if (response.data && response.data.files) {
-          setSubjects(response.data.files);
-        } else {
-          setSubjects([]);
-        }
+        const res = await axios.get(url);
+        setSubjects(res.data.files || []);
       } catch (err) {
-        console.error("Error fetching subjects:", err);
-        setError("Failed to load subjects. Make sure the folder is public.");
+        console.error(err);
+        setError("Failed to load subjects. Please try again later.");
       } finally {
         setLoading(false);
       }
@@ -38,44 +34,89 @@ export default function Subjects() {
     fetchSubjects();
   }, [API_KEY, TOP_FOLDER_ID]);
 
-  if (loading)
-    return <div>  <Loading/>  </div>;
+  /* -------------------- States -------------------- */
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Loading />
+      </div>
+    );
+  }
 
-  if (error)
-    return <div className="text-center mt-10 text-red-500">{error}</div>;
+  if (error) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-red-500 font-semibold">
+        {error}
+      </div>
+    );
+  }
 
-  if (subjects.length === 0)
-    return <div className="text-center mt-10 text-gray-500">No subjects found.</div>;
+  if (subjects.length === 0) {
+    return (
+      <div className="min-h-screen flex items-center justify-center text-gray-500 text-lg">
+        No subjects found.
+      </div>
+    );
+  }
 
+  /* -------------------- UI -------------------- */
   return (
     <>
-      <Header/>
-    <div className="min-h-screen bg-gray-100 p-6 sm:p-8 md:p-10">
+      <Header />
+
+      <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 px-4 sm:px-6 md:px-10 py-8">
+
+        {/* Back Button */}
         <button
           onClick={() => navigate(-1)}
-          className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition cursor-pointer"
+          className="mb-6 inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 font-semibold transition"
         >
-          ← Back to Subjects
+          ← Back
         </button>
-      <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center">
-        Subjects
-      </h1>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {subjects.map((subject) => (
-          <div
-            key={subject.id}
-            onClick={() => navigate(`/subject/${subject.id}`)} // Redirect to SubjectFiles page
-            className="cursor-pointer bg-white p-6 rounded-lg shadow hover:shadow-xl transition transform hover:-translate-y-1 duration-300 flex flex-col justify-between"
-          >
-            <div>
-              <p className="font-semibold text-lg truncate">{subject.name}</p>
-              <p className="text-sm text-gray-400 mt-1">{subject.mimeType}</p>
+        {/* Page Title */}
+        <h1 className="text-3xl sm:text-4xl font-extrabold text-center text-gray-900 mb-12">
+          Subjects
+        </h1>
+
+        {/* Subjects Grid */}
+        <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+          {subjects.map((subject, index) => (
+            <div
+              key={subject.id}
+              onClick={() => navigate(`/subject/${subject.id}`)}
+              className="group cursor-pointer bg-white/70 backdrop-blur-lg border border-gray-200 rounded-2xl shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 animate-fadeIn"
+              style={{ animationDelay: `${index * 80}ms` }}
+            >
+              <div className="p-6 flex flex-col h-full">
+
+                {/* Icon */}
+                <div className="h-14 w-14 rounded-xl bg-indigo-100 flex items-center justify-center text-2xl mb-4">
+                  📚
+                </div>
+
+                {/* Subject Name */}
+                <h3 className="font-semibold text-gray-900 text-lg mb-2 truncate">
+                  {subject.name}
+                </h3>
+
+                {/* Sub text */}
+                <p className="text-sm text-gray-500">
+                  View notes, assignments & question papers
+                </p>
+
+                {/* Hover Action */}
+                <div className="mt-auto pt-6">
+                  <span className="inline-block text-sm font-semibold text-indigo-600 group-hover:underline">
+                    Open Subject →
+                  </span>
+                </div>
+
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
     </>
   );
 }
